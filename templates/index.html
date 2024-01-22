@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vivek's Map</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{{ header|safe }}
+</head>
+<body class="w3-light-grey">
+
+<!-- Navigation bar with social media icons -->
+<div class="w3-bar w3-black w3-hide-small">
+  <a href="https://www.linkedin.com/in/vi-vek/" class="w3-bar-item w3-button"><i class="fa fa-linkedin">Linkedin</i></a>
+  <a href="https://github.com/Chuckoo/mscs_dbms_website" class="w3-bar-item w3-button"><i class="fa fa-github">Github</i></a>
+</div>
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Vivek's Choropleth Map</b></h1>
+    <h6>This is my submission to the next round of the dbms project submission. I hope you enjoy !</h6>
+    <h6>you can scroll to zoom in and use the interactive map. Click on each country for more info</h6>
+  </header>
+
+  <!-- Image header -->
+  <header class=" w3-center" id="home">
+  {{ body_html|safe }}
+  </header>
+   <script>
+    {{ script|safe }}
+    </script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <script>
+  $( function() {
+    $( "#maplegend" ).draggable({
+                    start: function (event, ui) {
+                        $(this).css({
+                            right: "auto",
+                            top: "auto",
+                            bottom: "auto"
+                        });
+                    }
+                });
+});
+
+  </script>
+<div id='maplegend' class='maplegend' 
+    style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
+     border-radius:6px; padding: 10px; font-size:14px; right: 20px; bottom: 20px;'>
+     
+<div class='legend-title'>Legend (Draggable)</div>
+<div class='legend-scale'>
+  <ul class='legend-labels'>
+    <li><span style='background:#36FF00;opacity:0.2;'></span>>75175</li>
+    <li><span style='background:#FFC500;opacity:0.2;'></span>>10538</li>
+    <li><span style='background:#FF2D00;opacity:0.2;'></span>>1844</li>
+    <li><span style='background:#00C9FF;opacity:0.2;'></span>>=0</li>
+    <li><span style='background:black;opacity:0.2;'></span>Data doesn't exist</li>
+
+  </ul>
+</div>
+</div>
+  <!-- Grid -->
+  <div class="w3-row w3-padding w3-border">
+
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12">
+    
+      <!-- Blog entry -->
+      <div class="w3-container w3-white w3-margin w3-padding-large">
+        <div class="w3-center">
+          <h3>PLEASE NOTE:</h3>
+        </div>
+
+        <div class="w3-justify">
+          <p>Some countries are not displayed on this map. It is either because they are not mentioned on the Points.txt or it does not sync up with the shapefile provided. Here is the list of all the countries exculded from Points.txts</p>
+          <p>Tokelau<p>
+<p>Reunion</p>
+<p>Bouvet Island</p>
+<p>Paracel Islands</p>
+<p>Christmas Island</p>
+<p>Guadeloupe</p>
+<p>Martinique</p>
+<p>Svalbard and Jan Mayen</p>
+<p>Caspian Sea</p>
+<p>Mayotte</p>
+<p>Bonaire, Sint Eustatius and Saba</p>
+<p>Akrotiri and Dhekelia</p>
+<p>Cocos Islands</p>
+          <p class="w3-clear"></p>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+    <!-- About/Information menu -->
+    <div class="w3-col l4">
+      <!-- About Card -->
+      <div class="w3-white w3-margin">
+        <img src="{{url_for('static', filename='viv.jpeg')}}" alt="Vivek's picture" style="width:100%" class="w3-grayscale">
+        <div class="w3-container w3-black">
+          <h4>Vivek Venkateshprasad</h4>
+          <p>This is me. I have used python with the folium framework to display the map. To know more, you can read the src code for this on my Github. Just click on the top left link</p>
+          <p><strong>Student ID:</strong> 862468868</p>
+          <p><strong>Student Email:</strong> vv002@ucr.edu</p>
+        </div>
+      </div>
+      <hr>
+          </div>
+          </div>
+          <hr>
+<!-- Footer -->
+<footer class="w3-container w3-dark-grey" style="padding:32px">
+  <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+</body>
+</html>
+<style type='text/css'>
+  .maplegend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+  .maplegend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .maplegend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+  .maplegend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+  .maplegend .legend-source {
+    font-size: 80%;
+    color: #777;
+    clear: both;
+    }
+  .maplegend a {
+    color: #777;
+    }
+</style>
+<!DOCTYPE html>

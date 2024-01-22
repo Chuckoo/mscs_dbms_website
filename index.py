@@ -65,10 +65,7 @@ def home():
         "index.html",
         header=header,
         body_html=body_html,
-        script=script,
-        a=a,
-        b=b,
-        c=c
+        script=script
     )
 
 if __name__ == "__main__":
